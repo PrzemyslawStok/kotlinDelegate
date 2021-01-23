@@ -1,19 +1,19 @@
 abstract class Figure2D {
-    abstract fun volume(): Double
-    abstract fun field(): Double
+    abstract fun area(): Double
+    abstract fun perimeter(): Double
 
     fun info() {
-        println("Volume: ${volume()}")
-        println("Field: ${field()}")
+        println("Area: ${area()}")
+        println("Perimeter: ${perimeter()}")
     }
 }
 
 class Square(val a: Double) : Figure2D() {
-    override fun volume(): Double {
+    override fun area(): Double {
         return a * a
     }
 
-    override fun field(): Double {
+    override fun perimeter(): Double {
         return 4 * a
     }
 }
