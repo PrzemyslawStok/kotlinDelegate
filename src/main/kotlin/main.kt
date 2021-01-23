@@ -92,18 +92,6 @@ class Figure3D(val base: Base, val h: Double) {
     }
 }
 
-//To może być troszkę trudniejsze...
-class newFigure3D(val base: Figure2D, val h: Double) : Figure2D by base {
-    fun volume(): Double {
-        return area() * h
-    }
-
-    fun figure3DArea(): Double {
-        return h * perimeter() + 2 * area()
-    }
-}
-
-
 fun main() {
     val figureList = mutableListOf<Figure2D>()
 
@@ -125,7 +113,4 @@ fun main() {
 
     val roller = Figure3D(Base(Circle(10.0),"plastic"),5.0)
     roller.volume()
-
-    val newRoller = newFigure3D(Circle(10.0),5.0)
-
 }
