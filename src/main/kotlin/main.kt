@@ -32,9 +32,28 @@ class Rectangle(val a: Double, val b: Double):Figure2D() {
     override fun perimeter(): Double {
         return 2*a+2*b
     }
+
+    override fun info() {
+        println("---------Rectangle---------")
+        println("a: $a b: $b")
+        super.info()
+    }
 }
 
-class Circle(val r: Double){
+class Circle(val r: Double): Figure2D(){
+    override fun area(): Double {
+        return Math.PI*r*r
+    }
+
+    override fun perimeter(): Double {
+        return 2*Math.PI*r
+    }
+
+    override fun info() {
+        println("---------Circle---------")
+        println("r: $r")
+        super.info()
+    }
 
 }
 
@@ -43,10 +62,10 @@ fun main() {
 
     figureList.add(Square(10.0))
     figureList.add(Rectangle(10.0,10.0))
+    figureList.add(Circle(2.0))
 
     figureList.forEach {
         it.info()
-        println("------------------")
     }
 
 }
