@@ -8,7 +8,7 @@ abstract class Figure2D {
     }
 }
 
-class Square(val a: Double) : Figure2D() {
+open class Square(val a: Double) : Figure2D() {
     override fun area(): Double {
         return a * a
     }
@@ -57,6 +57,16 @@ class Circle(val r: Double): Figure2D(){
 
 }
 
+class Base(val figure2D: Figure2D){
+    fun area():Double{
+        return figure2D.area()
+    }
+
+    fun perimeter():Double{
+        return figure2D.area()
+    }
+}
+
 fun main() {
     val figureList = mutableListOf<Figure2D>()
 
@@ -67,5 +77,9 @@ fun main() {
     figureList.forEach {
         it.info()
     }
+
+    val base = Base(Square(10.0))
+    println(base.area())
+    println(base.perimeter())
 
 }
