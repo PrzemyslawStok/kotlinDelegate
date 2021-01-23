@@ -18,13 +18,22 @@ class Square(val a: Double) : Figure2D() {
     }
 }
 
-class Rectangle(val a: Double, val b: Double) {
+class Rectangle(val a: Double, val b: Double):Figure2D() {
+    override fun area(): Double {
+        return a*b
+    }
+
+    override fun perimeter(): Double {
+        return 2*a+2*b
+    }
+}
+
+class Circle(val r: Double){
 
 }
 
 fun main() {
     val figureList = mutableListOf<Figure2D>()
-
 
     figureList.add(Square(10.0))
     //figureList.add(Rectangle(10.0,10.0))
