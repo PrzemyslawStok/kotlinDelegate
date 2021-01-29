@@ -24,6 +24,10 @@ open class Square(val a: Double) : Figure2D {
     }
 }
 
+class Triangle(val a: Double):Figure2D{
+
+}
+
 class Rectangle(val a: Double, val b: Double) : Figure2D {
     override fun area(): Double {
         return a * b
