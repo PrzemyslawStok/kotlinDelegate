@@ -35,6 +35,13 @@ class Triangle(val a: Double) : Figure2D {
 
 }
 
+class RectangularTriangle(val a: Double, val b: Double):Figure2D{
+    val c: Double
+    init{
+
+    }
+}
+
 class Rectangle(val a: Double, val b: Double) : Figure2D {
     override fun area(): Double {
         return a * b
