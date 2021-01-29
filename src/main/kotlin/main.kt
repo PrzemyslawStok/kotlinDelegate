@@ -24,7 +24,14 @@ open class Square(val a: Double) : Figure2D {
     }
 }
 
-class Triangle(val a: Double):Figure2D{
+class Triangle(val a: Double) : Figure2D {
+    override fun area(): Double {
+        return  Math.sqrt(3.0) / 4.0 * a * a
+    }
+
+    override fun perimeter(): Double {
+        return 3*a
+    }
 
 }
 
@@ -61,7 +68,7 @@ class Circle(val r: Double) : Figure2D {
 
 }
 
-class Base(val figure2D: Figure2D, val material:String) {
+class Base(val figure2D: Figure2D, val material: String) {
     fun area(): Double {
         return figure2D.area()
     }
@@ -70,17 +77,17 @@ class Base(val figure2D: Figure2D, val material:String) {
         return figure2D.perimeter()
     }
 
-    fun material():String{
+    fun material(): String {
         return material
     }
 }
 
-class newBase(val figure2D: Figure2D, val material: String) : Figure2D by figure2D{
-    fun material():String{
+class newBase(val figure2D: Figure2D, val material: String) : Figure2D by figure2D {
+    fun material(): String {
         return material
     }
 
-    override fun info(){
+    override fun info() {
         println("area ${area()}")
         println("perimeter ${perimeter()}")
     }
@@ -107,14 +114,16 @@ fun main() {
         it.info()
     }
 
-    val base = Base(Square(10.0),"wood")
+    val base = Base(Square(10.0), "wood")
     println(base.area())
     println(base.perimeter())
 
-    val newBase = newBase(Square(10.0),"wood")
+    val newBase = newBase(Square(10.0), "wood")
     println(newBase.area())
     println(newBase.perimeter())
 
-    val roller = Figure3D(Base(Circle(10.0),"plastic"),5.0)
+    val roller = Figure3D(Base(Circle(10.0), "plastic"), 5.0)
     roller.volume()
+
+    val trianglePrism = Figure3D()
 }
