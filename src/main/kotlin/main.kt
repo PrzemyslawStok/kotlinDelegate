@@ -43,11 +43,11 @@ class RectangularTriangle(val a: Double, val b: Double) : Figure2D {
     }
 
     override fun area(): Double {
-        return a*b
+        return a * b
     }
 
     override fun perimeter(): Double {
-        return a+b+c
+        return a + b + c
     }
 }
 
@@ -109,13 +109,25 @@ class newBase(val figure2D: Figure2D, val material: String) : Figure2D by figure
     }
 }
 
-class Figure3D(val base: Base, val h: Double) {
-    fun volume(): Double {
+open class Figure3D(open val base: Base, open val h: Double) {
+    open fun volume(): Double {
         return base.area() * h
     }
 
-    fun area(): Double {
+    open fun area(): Double {
         return h * base.perimeter() + 2 * base.area()
+    }
+}
+
+class Figure3D1(val baseCircle: Circle, override val h: Double) : Figure3D(Base(baseCircle, "metal"), h) {
+    override fun volume(): Double {
+        return 1.0 / 3.0 * super.volume()
+    }
+
+    override fun area(): Double {
+        val r = baseCircle.r
+        val l = Math.sqrt(r * r + h * h)
+        return Math.PI * r * l
     }
 }
 
@@ -143,6 +155,6 @@ fun main() {
 
     val trianglePrism = Figure3D(Base(Triangle(12.0), "metal"), 2.0)
     println("Triangle prism volume: ${trianglePrism.volume()}")
-    val rectangularPrism = Figure3D(Base(RectangularTriangle(12.0,5.0), "metal"), 2.0)
+    val rectangularPrism = Figure3D(Base(RectangularTriangle(12.0, 5.0), "metal"), 2.0)
     println("Rectangular prism volume: ${rectangularPrism.volume()}")
 }
