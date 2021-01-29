@@ -119,7 +119,8 @@ open class Figure3D(open val base: Base, open val h: Double) {
     }
 }
 
-class Figure3D1(val baseCircle: Circle, override val h: Double) : Figure3D(Base(baseCircle, "metal"), h) {
+class Figure3D1(val baseCircle: Circle, override val h: Double)
+    : Figure3D(Base(baseCircle, "metal"), h) {
     override fun volume(): Double {
         return 1.0 / 3.0 * super.volume()
     }
@@ -128,6 +129,17 @@ class Figure3D1(val baseCircle: Circle, override val h: Double) : Figure3D(Base(
         val r = baseCircle.r
         val l = Math.sqrt(r * r + h * h)
         return Math.PI * r * l
+    }
+}
+
+class Figure3D2(val baseCircle: Circle):Figure3D(Base(baseCircle,"wood"),0.0){
+    override fun volume(): Double {
+        val r = baseCircle.r
+        return 4.0/3.0*Math.PI*r*r*r
+    }
+
+    override fun area(): Double {
+        return super.area()
     }
 }
 
