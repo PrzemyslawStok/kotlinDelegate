@@ -26,19 +26,28 @@ open class Square(val a: Double) : Figure2D {
 
 class Triangle(val a: Double) : Figure2D {
     override fun area(): Double {
-        return  Math.sqrt(3.0) / 4.0 * a * a
+        return Math.sqrt(3.0) / 4.0 * a * a
     }
 
     override fun perimeter(): Double {
-        return 3*a
+        return 3 * a
     }
 
 }
 
-class RectangularTriangle(val a: Double, val b: Double):Figure2D{
+class RectangularTriangle(val a: Double, val b: Double) : Figure2D {
     val c: Double
-    init{
 
+    init {
+        c = Math.sqrt(a * a + b * b)
+    }
+
+    override fun area(): Double {
+        return a*b
+    }
+
+    override fun perimeter(): Double {
+        return a+b+c
     }
 }
 
@@ -132,6 +141,8 @@ fun main() {
     val roller = Figure3D(Base(Circle(10.0), "plastic"), 5.0)
     roller.volume()
 
-    val trianglePrism = Figure3D(Base(Triangle(12.0),"metal"),2.0)
+    val trianglePrism = Figure3D(Base(Triangle(12.0), "metal"), 2.0)
     println("Triangle prism volume: ${trianglePrism.volume()}")
+    val rectangularPrism = Figure3D(Base(RectangularTriangle(12.0,5.0), "metal"), 2.0)
+    println("Rectangular prism volume: ${rectangularPrism.volume()}")
 }
