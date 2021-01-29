@@ -125,5 +125,6 @@ fun main() {
     val roller = Figure3D(Base(Circle(10.0), "plastic"), 5.0)
     roller.volume()
 
-    val trianglePrism = Figure3D()
+    val trianglePrism = Figure3D(Base(Triangle(12.0),"metal"),2.0)
+    println("Triangle prism volume: ${trianglePrism.volume()}")
 }
